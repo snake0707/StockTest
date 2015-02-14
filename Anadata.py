@@ -21,8 +21,8 @@ if __name__=='__main__':
 	moveList = []
 	sumList = []
 
-	time = datetime.datetime.now()
-	print(time)
+	time_begin = datetime.datetime.now()
+	print(time_begin)
 
 	for tbl in tblList:
 
@@ -37,5 +37,8 @@ if __name__=='__main__':
 		w2sqlite.writeToDB(wFile, tbl, kind1, moveList)
 		w2sqlite.writeToDB(sumFile, tbl, kind2, sumList)
 
-	time = datetime.datetime.now()
-	print(time)
+	time_end = datetime.datetime.now()
+	time_dur = time_end - time_begin
+	print(time_begin)
+	print(time_end)
+	print(time_dur)

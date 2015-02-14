@@ -16,8 +16,8 @@ if __name__=='__main__':
 
 	tblList = getname.getTblList(path, flagStr)
 
-	time = datetime.datetime.now()
-	print(time)
+	time_begin = datetime.datetime.now()
+	print(time_begin)
 
 	for tbl in tblList:
 
@@ -34,5 +34,8 @@ if __name__=='__main__':
 
 		print(tbl)
 
-	time = datetime.datetime.now()
-	print(time)
+	time_end = datetime.datetime.now()
+	time_dur = time_end - time_begin
+	print(time_begin)
+	print(time_end)
+	print(time_dur)
