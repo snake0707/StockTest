@@ -45,22 +45,27 @@ def insertTbl(dbFile, tbl, values):
 	con = sqlite3.connect(dbFile)
 	cur = con.cursor()
 
+	dateBegin = config.getBeginDate()
+
 	insert_sql = "insert into " + tbl + " values "
 
 	for row in values:
-		strrow = map(str, row)
-		#print(row)
-		#print(strrow)
-		rec = "("
-		for i in range(0, len(strrow)):
-			#print(row[i])
-			#print(strrow[i])
-			rec = rec + "'" + strrow[i] + "'"
-			if i < len(strrow) - 1:
-				rec += ", "
-		rec += ")"
-		in_sql = insert_sql + rec
-		cur.execute(in_sql)
+		if row[0] > dateBegin:
+			strrow = map(str, row)
+			#print(row[0])
+			#print(dateBegin)
+			#print(row[0] > dateBegin)
+			#print(strrow[0])
+			rec = "("
+			for i in range(0, len(strrow)):
+				#print(row[i])
+				#print(strrow[i])
+				rec = rec + "'" + strrow[i] + "'"
+				if i < len(strrow) - 1:
+					rec += ", "
+			rec += ")"
+			in_sql = insert_sql + rec
+			cur.execute(in_sql)
 
 	con.commit()
 	 

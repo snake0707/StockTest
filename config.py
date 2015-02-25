@@ -3,7 +3,7 @@ import os
 MA5Num = 7
 
 def getTestMode():
-	testMode = True
+	testMode = False
 	return testMode
 
 def getCSVFilePath():
@@ -45,6 +45,10 @@ def getSumDatabaseName():
 def getTestSumDatabaseName():
 	sumDatabaseName = "sumTestDonDatabase.db"
 	return sumDatabaseName
+
+def getBeginDate():
+	beginDate = "2010/01/01"
+	return beginDate
 
 def getKDJDay():
 	KDJDay = 9
@@ -106,7 +110,7 @@ def getLoseStopRate():
 	return 0.05
 
 def getHoldDays():
-	return 30
+	return 5
 
 def getSumTblName():
 	sumTblName = "totalSum"
