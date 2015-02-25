@@ -36,11 +36,12 @@ if __name__=='__main__':
 
 	for tbl in tblList:
 
-		print(tbl)
+		print(tbl)		
 
 		data = rfsqlite.getDataFromDB(rFile, tbl)
-		moveList = dataAnalyze.ana(data)
+		#moveList = dataAnalyze.ana(data)
 		#print(moveList)
+		moveList = dataAnalyze.anaDonchian(data)
 
 		sumList = summarize.sum(tbl, moveList)
 
