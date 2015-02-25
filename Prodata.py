@@ -19,8 +19,9 @@ if __name__=='__main__':
 		path = config.getCSVFilePath()
 	
 	flagStr = config.getFlagStr()
-	kind = "ProMA"
+	#kind = "ProMA"
 	#kind = "ProKDJ"
+	kind = "ProDonchian"
 
 	tblList = getname.getTblList(path, flagStr)
 
@@ -32,11 +33,14 @@ if __name__=='__main__':
 		data = rfsqlite.getDataFromDB(rFile, tbl)
 
 		#MA Pro
-		processed_data = dataprocess.processMA(data, 5)
-		processed_data = dataprocess.processMA(processed_data, 10)
+		#processed_data = dataprocess.processMA(data, 5)
+		#processed_data = dataprocess.processMA(processed_data, 10)
 
 		#KDJ Pro
 		#processed_data = dataprocess.processKDJ(data)
+
+		#Donchian Pro
+		processed_data = dataprocess.processDonchian(data)
 
 		w2sqlite.writeToDB(wFile, tbl, kind, processed_data)
 

@@ -1,6 +1,27 @@
 import config
 import signalLogic
 
+def sellDon(row, moveList, sellPrice):
+	if len(moveList) == 0:
+		lastMove = [0, 0, 0, 0, 10000, 0]
+	else :
+		lastMove = moveList[-1]
+	singleMove = []
+
+	curPrice = sellPrice
+	rate = curPrice / lastMove[3]
+	share = lastMove[2]
+	curHold = lastMove[4] + curPrice * share
+
+	singleMove.extend(row[0:1])
+	singleMove.append("sell")
+	singleMove.append(share) 
+	singleMove.append(curPrice)
+	singleMove.append(curHold)
+	singleMove.append(rate)
+
+	return singleMove
+
 def sell(row, moveList):
 	if len(moveList) == 0:
 		lastMove = [0, 0, 0, 0, 10000, 0]
@@ -25,7 +46,7 @@ def sell(row, moveList):
 	
 	singleMove.extend(row[0:1])
 	singleMove.append("sell")
-	singleMove.append(share) 
+	singleMove.append(share)
 	singleMove.append(curPrice)
 	singleMove.append(curHold)
 	singleMove.append(rate)
@@ -56,6 +77,28 @@ def buy(row, moveList):
 
 	return singleMove
 
+def buyDonPrice(row, moveList, buyPrice):
+	if len(moveList) == 0:
+		lastMove = [0, 0, 0, 0, 10000, 0]
+	else :
+		lastMove = moveList[-1]
+	singleMove = []
+
+	curPrice = buyPrice
+	if curPrice == 0:
+		curPrice = row[2]
+	share = lastMove[4] / curPrice
+	curHold = lastMove[4] - curPrice * share
+	rate = 0
+
+	singleMove.extend(row[0:1])
+	singleMove.append("buy")
+	singleMove.append(share)
+	singleMove.append(curPrice)
+	singleMove.append(curHold)
+	singleMove.append(rate)
+
+	return singleMove
 
 def ana(data):
 	curdata = map(list, data)
@@ -78,6 +121,29 @@ def ana(data):
 			if signalLogic.isbuy(row):
 			#if row[i_MA5] > row[i_MA10]:
 				singleMove = buy(row, moveList)
+				moveList.append(singleMove)
+				hold = True	
+
+	return moveList
+
+def anaDonchian(data):
+	curdata = map(list, data)
+	moveList = []
+
+	hold = False
+
+	for row in curdata:
+		singleMove = []
+		if hold:
+			sellPrice = signalLogic.sellDonPrice(row, moveList[-1])
+			if sellPrice:
+				singleMove = sellDon(row, moveList, sellPrice)
+				moveList.append(singleMove)
+				hold = False
+		else :
+			buyPrice = signalLogic.buyDonPrice(row)
+			if buyPrice:
+				singleMove = buyDon(row, moveList, buyPrice)
 				moveList.append(singleMove)
 				hold = True	
 

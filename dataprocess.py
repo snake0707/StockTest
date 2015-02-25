@@ -77,6 +77,38 @@ def processKDJ(data):
 		row.append(J)
 	return curdata
 
+def processDonchian(data, tHigh = 20, tLow = 10):
+	curdata = map(list, data)
+
+	donchianHighList = []
+	donchianLowList = []
+
+	i_end = config.getEndNum()
+	i_high = config.getHighNum()
+	i_low = config.getLowNum()
+
+	for row in curdata:
+		if len(donchianHighList) == 0:
+			high_n = 0
+		else :
+			high_n = high(donchianHighList)
+		if len(donchianLowList) == 0:
+			low_n = 0
+		else :
+			low_n = low(donchianLowList)
+
+		row.append(high_n)
+		row.append(low_n)
+
+		donchianHighList.append(row[i_high])
+		donchianLowList.append(row[i_low])
+		if len(donchianHighList) > tHigh:
+			del donchianHighList[0]
+		if len(donchianLowList) > tLow:
+			del donchianLowList[0]
+
+	return curdata
+
 def high(list):
 	high = list[0]
 	for num in list:

@@ -116,6 +116,13 @@ def writeToDB(dbFile, tbl, kind, values = []):
 		createTbl(dbFile, tbl, tblStruct)
 
 		insertTbl(dbFile, tbl, values)
+	elif kind == "ProDonchian":
+		tblStruct = config.getProDonchianTblStruct()
+
+		dropTbl(dbFile, tbl)
+		createTbl(dbFile, tbl, tblStruct)
+
+		insertTbl(dbFile, tbl, values)
 	elif kind == "Ana":
 		tblStruct = config.getAnaTblStruct()
 

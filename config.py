@@ -3,7 +3,7 @@ import os
 MA5Num = 7
 
 def getTestMode():
-	testMode = False
+	testMode = True
 	return testMode
 
 def getCSVFilePath():
@@ -23,27 +23,27 @@ def getTestOriDatabaseName():
 	return oriDatabaseName
 
 def getProDatabaseName():
-	proDatabaseName = "proMADatabase.db"
+	proDatabaseName = "proDonDatabase.db"
 	return proDatabaseName
 
 def getTestProDatabaseName():
-	proDatabaseName = "proTestMADatabase.db"
+	proDatabaseName = "proTestDonDatabase.db"
 	return proDatabaseName
 
 def getAnaDatabaseName():
-	anaDatabaseName = "anaMADatabase.db"
+	anaDatabaseName = "anaDonDatabase.db"
 	return anaDatabaseName
 
 def getTestAnaDatabaseName():
-	anaDatabaseName = "anaTestMADatabase.db"
+	anaDatabaseName = "anaTestDonDatabase.db"
 	return anaDatabaseName
 
 def getSumDatabaseName():
-	sumDatabaseName = "sumMADatabase.db"
+	sumDatabaseName = "sumDonDatabase.db"
 	return sumDatabaseName
 
 def getTestSumDatabaseName():
-	sumDatabaseName = "sumTestMADatabase.db"
+	sumDatabaseName = "sumTestDonDatabase.db"
 	return sumDatabaseName
 
 def getKDJDay():
@@ -68,6 +68,12 @@ def getLowNum():
 
 def getMA5Num():
 	return MA5Num
+
+def getHignNNum():
+	return 7
+
+def getLowNNum():
+	return 8
 
 def getMA10Num():
 	return 8
@@ -100,7 +106,7 @@ def getLoseStopRate():
 	return 0.05
 
 def getHoldDays():
-	return 5
+	return 30
 
 def getSumTblName():
 	sumTblName = "totalSum"
@@ -144,6 +150,20 @@ def getProKDJTblStruct():
 						K float,
 						D float,
 						J float
+						);"""
+	return proTblStruct
+
+def getProDonchianTblStruct():
+	proTblStruct = """(
+						date date,
+						N1 float,
+						N2 float,
+						N3 float,
+						N4 float,
+						N5 float,
+						N6 float,
+						hign_n float,
+						low_n float
 						);"""
 	return proTblStruct
 
