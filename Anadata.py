@@ -8,11 +8,21 @@ import datetime
 
 if __name__=='__main__':
 
-	rFile = config.getProDatabaseName()
-	wFile = config.getAnaDatabaseName()
-	sumFile = config.getSumDatabaseName()
+	testMode = config.getTestMode()
 
-	path = config.getCSVFilePath()
+	if testMode:
+		rFile = config.getTestProDatabaseName()
+		wFile = config.getTestAnaDatabaseName()
+		sumFile = config.getTestSumDatabaseName()
+
+		path = config.getTestCSVFilePath()
+	else :
+		rFile = config.getProDatabaseName()
+		wFile = config.getAnaDatabaseName()
+		sumFile = config.getSumDatabaseName()
+
+		path = config.getCSVFilePath()
+
 	flagStr = config.getFlagStr()
 	kind1 = "Ana"
 	kind2 = "Sum"

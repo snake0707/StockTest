@@ -10,13 +10,22 @@ def sell(row, moveList):
 
 	#share = config.getDefaultShare()
 	curPrice = row[config.getEndNum()]
+	rate = curPrice / lastMove[3]
+	loseControl = 1 - config.getLoseStopRate()
+	winControl = 1 + config.getWinStopRate()
+	if rate < loseControl:
+		curPrice = lastMove[3] * loseControl
+		rate = loseControl
+	elif rate > winControl:
+		curPrice = lastMove[3] * winControl
+		rate = winControl
+
 	share = lastMove[2]
 	curHold = lastMove[4] + curPrice * share
-	rate = curPrice / lastMove[3]
 	
 	singleMove.extend(row[0:1])
 	singleMove.append("sell")
-	singleMove.append(share)
+	singleMove.append(share) 
 	singleMove.append(curPrice)
 	singleMove.append(curHold)
 	singleMove.append(rate)

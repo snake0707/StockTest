@@ -7,9 +7,17 @@ import datetime
 
 if __name__=='__main__':
 
-	rFile = config.getOriDatabaseName()
-	wFile = config.getProDatabaseName()
-	path = config.getCSVFilePath()
+	testMode = config.getTestMode()
+
+	if testMode:
+		rFile = config.getTestOriDatabaseName()
+		wFile = config.getTestProDatabaseName()
+		path = config.getTestCSVFilePath()
+	else :
+		rFile = config.getOriDatabaseName()
+		wFile = config.getProDatabaseName()
+		path = config.getCSVFilePath()
+	
 	flagStr = config.getFlagStr()
 	kind = "ProMA"
 	#kind = "ProKDJ"

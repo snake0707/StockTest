@@ -6,9 +6,17 @@ import datetime
 
 if __name__=='__main__':
 
-	wFile = config.getOriDatabaseName()
-	path = config.getCSVFilePath()
+	testMode = config.getTestMode()
+
+	if testMode:
+		wFile = config.getTestOriDatabaseName()
+		path = config.getTestCSVFilePath()
+	else :
+		wFile = config.getOriDatabaseName()
+		path = config.getCSVFilePath()
+	
 	flagStr = config.getFlagStr()
+
 	tblNameDict = getname.getFileDict(path, flagStr)
 	kind = "CAW"
 

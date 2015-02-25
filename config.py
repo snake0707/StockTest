@@ -2,25 +2,48 @@ import os
 
 MA5Num = 7
 
+def getTestMode():
+	testMode = False
+	return testMode
 
 def getCSVFilePath():
 	path = os.getcwd() + "/csv"
+	return path
+
+def getTestCSVFilePath():
+	path = os.getcwd() + "/csvTest"
 	return path
 
 def getOriDatabaseName():
 	oriDatabaseName = "oriDatabase.db"
 	return oriDatabaseName
 
+def getTestOriDatabaseName():
+	oriDatabaseName = "oriTestDatabase.db"
+	return oriDatabaseName
+
 def getProDatabaseName():
 	proDatabaseName = "proMADatabase.db"
+	return proDatabaseName
+
+def getTestProDatabaseName():
+	proDatabaseName = "proTestMADatabase.db"
 	return proDatabaseName
 
 def getAnaDatabaseName():
 	anaDatabaseName = "anaMADatabase.db"
 	return anaDatabaseName
 
+def getTestAnaDatabaseName():
+	anaDatabaseName = "anaTestMADatabase.db"
+	return anaDatabaseName
+
 def getSumDatabaseName():
 	sumDatabaseName = "sumMADatabase.db"
+	return sumDatabaseName
+
+def getTestSumDatabaseName():
+	sumDatabaseName = "sumTestMADatabase.db"
 	return sumDatabaseName
 
 def getKDJDay():
@@ -60,6 +83,9 @@ def getDefaultShare():
 
 def getPriceNum():
 	return 3
+
+def getHoldNum():
+	return 4
 
 def getLastBuyPrice():
 	return 3
@@ -140,6 +166,13 @@ def getSumTblStruct():
 						winRate float,
 						lose integer,
 						loseRate float,
-						rate float
+						rate float,
+						mostHold float,
+						mostHoldDate date,
+						mostBackRate float,
+						mostBackRateDate date,
+						mostBackHold float,
+						mostBackMostHold float,
+						mostBackMostHoldDate date
 						);"""
 	return sumTblStruct
