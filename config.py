@@ -15,11 +15,11 @@ def getTestCSVFilePath():
 	return path
 
 def getOriDatabaseName():
-	oriDatabaseName = "oriDatabase.db"
+	oriDatabaseName = "ori2010Database.db"
 	return oriDatabaseName
 
 def getTestOriDatabaseName():
-	oriDatabaseName = "oriTestDatabase.db"
+	oriDatabaseName = "ori2010TestDatabase.db"
 	return oriDatabaseName
 
 def getProDatabaseName():
