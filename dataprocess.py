@@ -109,6 +109,53 @@ def processDonchian(data, tHigh = 20, tLow = 10):
 
 	return curdata
 
+def processDualThrust(data, tN = 10, Ks = 0.5, Kx = 0.5):
+	curdata = map(list, data)
+
+	nDayHighList = []
+	nDayEndList = []
+	nDayLowList = []
+
+	i_open = config.getOpenNum()
+	i_end = config.getEndNum()
+	i_high = config.getHighNum()
+	i_low = config.getLowNum()
+
+	for row in curdata:
+		if len(nDayEndList) == 0:
+			hHn = 0.0
+			hEn = 0.0
+			lEn = 0.0
+			lLn = 0.0
+		else :
+			hHn = high(nDayHighList)
+			hEn = high(nDayEndList)
+			lEn = low(nDayEndList)
+			lLn = low(nDayLowList)
+
+		range_1 = hHn - lEn
+		range_2 = hEn - lLn
+		if range_1 > range_2 :
+			range_f = range_1
+		else :
+			range_f = range_2
+		buyPrice = row[i_open] + Ks * range_f
+		sellPrice = row[i_open] - Kx * range_f
+
+		row.append(buyPrice)
+		row.append(sellPrice)
+
+		nDayHighList.append(row[i_high])
+		nDayEndList.append(row[i_end])
+		nDayLowList.append(row[i_low])
+		if len(nDayEndList) > tN:
+			del nDayHighList[0]
+			del nDayEndList[0]
+			del nDayLowList[0]
+
+	return curdata
+
+
 def high(list):
 	high = list[0]
 	for num in list:

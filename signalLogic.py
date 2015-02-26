@@ -33,20 +33,23 @@ def buyDonPrice(row):
 	#return (singleBuyTag and totalBuyTag)
 	return singleBuyPrice
 
-def sellDonPrice(row, lastBuy):
-	singleSellTag = False
-	totalSellTag = True
-	winStopTag = False
-	loseStopTag = False
-	dateSellTag = False
+def buyDonAndDualPrice(row):
+	singleBuyPrice = 0.0
 
+	i_CurHigh = config.getHighNum()
+	i_buy = config.getBuyPriceNum()
+	if row[i_CurHigh] > row[i_buy]:
+		singleBuyPrice = row[i_buy]
+
+	return singleBuyPrice
+
+def sellDonAndDualPrice(row, lastBuy):
 	singleSellPrice = 0.0
 
-	i_LowN = config.getLowNNum()
+	i_sell = config.getSellPriceNum()
 	i_CurLow = config.getLowNum()
-	if row[i_CurLow] < row[i_LowN]:
-		singleSellTag = True
-		singleSellPrice = row[i_LowN]
+	if row[i_CurLow] < row[i_sell]:
+		singleSellPrice = row[i_sell]
 		return singleSellPrice
 
 	i_CurHigh = config.getHighNum()
@@ -54,11 +57,9 @@ def sellDonPrice(row, lastBuy):
 	winStopPrice = lastBuy[i_lastBuyPrice] * (1 + config.getWinStopRate())
 	loseStopPrice = lastBuy[i_lastBuyPrice] * (1 - config.getLoseStopRate())
 	if row[i_CurHigh] > winStopPrice:
-		winStopTag = True
 		singleSellPrice = winStopPrice
 		return singleSellPrice
 	if row[i_CurLow] < loseStopPrice:
-		loseStopTag = True
 		singleSellPrice = loseStopPrice
 		return singleSellPrice
 
@@ -76,12 +77,10 @@ def sellDonPrice(row, lastBuy):
 	lastBuyDate = datetime.datetime(lastBuyYear, lastBuyMonth, lastBuyDay)
 
 	if (curDate - lastBuyDate).days > config.getHoldDays():
-		dateSellTag = True
 		i_curPrice = config.getEndNum()
 		singleSellPrice = row[i_curPrice]
 		return singleSellPrice
 
-	#return ((singleSellTag and totalSellTag) or winStopTag or loseStopTag or dateSellTag)
 	return singleSellPrice
 
 def issell(row, lastBuy):

@@ -23,27 +23,33 @@ def getTestOriDatabaseName():
 	return oriDatabaseName
 
 def getProDatabaseName():
-	proDatabaseName = "proDonDatabase.db"
+	#proDatabaseName = "proDonDatabase.db"
+	proDatabaseName = "proDualDatabase.db"
 	return proDatabaseName
 
 def getTestProDatabaseName():
-	proDatabaseName = "proTestDonDatabase.db"
+	#proDatabaseName = "proTestDonDatabase.db"
+	proDatabaseName = "proTestDualDatabase.db"
 	return proDatabaseName
 
 def getAnaDatabaseName():
-	anaDatabaseName = "anaDonDatabase.db"
+	#anaDatabaseName = "anaDonDatabase.db"
+	anaDatabaseName = "anaDualDatabase.db"
 	return anaDatabaseName
 
 def getTestAnaDatabaseName():
-	anaDatabaseName = "anaTestDonDatabase.db"
+	#anaDatabaseName = "anaTestDonDatabase.db"
+	anaDatabaseName = "anaTestDualDatabase.db"
 	return anaDatabaseName
 
 def getSumDatabaseName():
-	sumDatabaseName = "sumDonDatabase.db"
+	#sumDatabaseName = "sumDonDatabase.db"
+	sumDatabaseName = "sumDualDatabase.db"
 	return sumDatabaseName
 
 def getTestSumDatabaseName():
-	sumDatabaseName = "sumTestDonDatabase.db"
+	#sumDatabaseName = "sumTestDonDatabase.db"
+	sumDatabaseName = "sumTestDualDatabase.db"
 	return sumDatabaseName
 
 def getBeginDate():
@@ -70,13 +76,17 @@ def getHighNum():
 def getLowNum():
 	return 3
 
+def getOpenNum():
+	return 1
+
 def getMA5Num():
 	return MA5Num
 
-def getHignNNum():
+#Don & Dual both use this
+def getBuyPriceNum():
 	return 7
-
-def getLowNNum():
+#Don & Dual both use this
+def getSellPriceNum():
 	return 8
 
 def getMA10Num():
@@ -104,13 +114,13 @@ def getLastBuyDate():
 	return 0
 
 def getWinStopRate():
-	return 0.08
+	return 0.2
 
 def getLoseStopRate():
 	return 0.05
 
 def getHoldDays():
-	return 5
+	return 1000
 
 def getSumTblName():
 	sumTblName = "totalSum"
@@ -168,6 +178,20 @@ def getProDonchianTblStruct():
 						N6 float,
 						hign_n float,
 						low_n float
+						);"""
+	return proTblStruct
+
+def getProDualThrustTblStruct():
+	proTblStruct = """(
+						date date,
+						N1 float,
+						N2 float,
+						N3 float,
+						N4 float,
+						N5 float,
+						N6 float,
+						buyPrice float,
+						sellPrice float
 						);"""
 	return proTblStruct
 

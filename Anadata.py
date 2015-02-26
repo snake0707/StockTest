@@ -41,7 +41,8 @@ if __name__=='__main__':
 		data = rfsqlite.getDataFromDB(rFile, tbl)
 		#moveList = dataAnalyze.ana(data)
 		#print(moveList)
-		moveList = dataAnalyze.anaDonchian(data)
+		#moveList = dataAnalyze.anaDonchian(data)
+		moveList = dataAnalyze.anaDonAndDual(data)
 
 		sumList = summarize.sum(tbl, moveList)
 

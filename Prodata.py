@@ -21,7 +21,8 @@ if __name__=='__main__':
 	flagStr = config.getFlagStr()
 	#kind = "ProMA"
 	#kind = "ProKDJ"
-	kind = "ProDonchian"
+	#kind = "ProDonchian"
+	kind = "ProDualThrust"
 
 	tblList = getname.getTblList(path, flagStr)
 
@@ -40,7 +41,10 @@ if __name__=='__main__':
 		#processed_data = dataprocess.processKDJ(data)
 
 		#Donchian Pro
-		processed_data = dataprocess.processDonchian(data)
+		#processed_data = dataprocess.processDonchian(data)
+
+		#DualThrust Pro
+		processed_data = dataprocess.processDualThrust(data)
 
 		w2sqlite.writeToDB(wFile, tbl, kind, processed_data)
 

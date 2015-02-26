@@ -1,7 +1,7 @@
 import config
 import signalLogic
 
-def sellDon(row, moveList, sellPrice):
+def sellDonAndDual(row, moveList, sellPrice):
 	if len(moveList) == 0:
 		lastMove = [0, 0, 0, 0, 10000, 0]
 	else :
@@ -77,7 +77,7 @@ def buy(row, moveList):
 
 	return singleMove
 
-def buyDon(row, moveList, buyPrice):
+def buyDonAndDual(row, moveList, buyPrice):
 	if len(moveList) == 0:
 		lastMove = [0, 0, 0, 0, 10000, 0]
 	else :
@@ -144,6 +144,29 @@ def anaDonchian(data):
 			buyPrice = signalLogic.buyDonPrice(row)
 			if buyPrice:
 				singleMove = buyDon(row, moveList, buyPrice)
+				moveList.append(singleMove)
+				hold = True	
+
+	return moveList
+
+def anaDonAndDual(data):
+	curdata = map(list, data)
+	moveList = []
+
+	hold = False
+
+	for row in curdata:
+		singleMove = []
+		if hold:
+			sellPrice = signalLogic.sellDonAndDualPrice(row, moveList[-1])
+			if sellPrice:
+				singleMove = sellDonAndDual(row, moveList, sellPrice)
+				moveList.append(singleMove)
+				hold = False
+		else :
+			buyPrice = signalLogic.buyDonAndDualPrice(row)
+			if buyPrice:
+				singleMove = buyDonAndDual(row, moveList, buyPrice)
 				moveList.append(singleMove)
 				hold = True	
 
