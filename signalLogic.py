@@ -77,6 +77,7 @@ def sellDonPrice(row, lastBuy):
 
 	if (curDate - lastBuyDate).days > config.getHoldDays():
 		dateSellTag = True
+		i_curPrice = config.getEndNum()
 		singleSellPrice = row[i_curPrice]
 		return singleSellPrice
 

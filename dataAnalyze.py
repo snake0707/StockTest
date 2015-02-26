@@ -77,7 +77,7 @@ def buy(row, moveList):
 
 	return singleMove
 
-def buyDonPrice(row, moveList, buyPrice):
+def buyDon(row, moveList, buyPrice):
 	if len(moveList) == 0:
 		lastMove = [0, 0, 0, 0, 10000, 0]
 	else :
