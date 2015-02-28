@@ -46,11 +46,12 @@ def insertTbl(dbFile, tbl, values):
 	cur = con.cursor()
 
 	dateBegin = config.getBeginDate()
+	dateEnd = config.getEndDate()
 
 	insert_sql = "insert into " + tbl + " values "
 
 	for row in values:
-		if row[0] > dateBegin:
+		if row[0] > dateBegin and row[0] < dateEnd:
 			strrow = map(str, row)
 			#print(row[0])
 			#print(dateBegin)
@@ -66,6 +67,34 @@ def insertTbl(dbFile, tbl, values):
 			rec += ")"
 			in_sql = insert_sql + rec
 			cur.execute(in_sql)
+
+	con.commit()
+	 
+	cur.close()
+	con.close()
+
+def insertSumTbl(dbFile, tbl, values):
+	con = sqlite3.connect(dbFile)
+	cur = con.cursor()
+
+	insert_sql = "insert into " + tbl + " values "
+
+	for row in values:
+		strrow = map(str, row)
+		#print(row[0])
+		#print(dateBegin)
+		#print(row[0] > dateBegin)
+		#print(strrow[0])
+		rec = "("
+		for i in range(0, len(strrow)):
+			#print(row[i])
+			#print(strrow[i])
+			rec = rec + "'" + strrow[i] + "'"
+			if i < len(strrow) - 1:
+				rec += ", "
+		rec += ")"
+		in_sql = insert_sql + rec
+		cur.execute(in_sql)
 
 	con.commit()
 	 
@@ -151,7 +180,7 @@ def writeToDB(dbFile, tbl, kind, values = []):
 		if not isTblExists(dbFile, sumTbl):
 			createTbl(dbFile, sumTbl, tblStruct)
 
-		insertTbl(dbFile, sumTbl, values)
+		insertSumTbl(dbFile, sumTbl, values)
 
 # test ================
 if __name__=='__main__':
