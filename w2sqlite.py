@@ -181,6 +181,14 @@ def writeToDB(dbFile, tbl, kind, values = []):
 			createTbl(dbFile, sumTbl, tblStruct)
 
 		insertSumTbl(dbFile, sumTbl, values)
+	elif kind == "Result":
+		tblStruct = config.getResultTblStruct()
+
+		resultTbl = config.getResultTblName()
+		dropTbl(dbFile, resultTbl)
+		createTbl(dbFile, resultTbl, tblStruct)
+
+		insertTbl(dbFile, resultTbl, values)
 
 # test ================
 if __name__=='__main__':

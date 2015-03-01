@@ -3,7 +3,7 @@ import os
 MA5Num = 7
 
 def getTestMode():
-	testMode = False
+	testMode = True
 	return testMode
 
 def getCSVFilePath():
@@ -13,6 +13,10 @@ def getCSVFilePath():
 def getTestCSVFilePath():
 	path = os.getcwd() + "/csvTest"
 	return path
+
+def getDefaultTbl():
+	defaultTbl = "SH1A0001"
+	return defaultTbl
 
 def getOriDatabaseName():
 	oriDatabaseName = "ori2012-2014Database.db"
@@ -51,6 +55,14 @@ def getTestSumDatabaseName():
 	sumDatabaseName = "sum2010-2011TestDonDatabase.db"
 	#sumDatabaseName = "sumTestDualDatabase.db"
 	return sumDatabaseName
+
+def getResultDatabaseName():
+	resultDatabaseName = "resultDatabase.db"
+	return resultDatabaseName
+
+def getTestResultDatabaseName():
+	resultDatabaseName = "resultTestDatabase.db"
+	return resultDatabaseName
 
 def getBeginDate():
 	beginDate = "2012/01/01"
@@ -130,6 +142,10 @@ def getSumTblName():
 	sumTblName = "totalSum"
 	return sumTblName
 
+def getResultTblName():
+	resultTblName = "result"
+	return resultTblName
+
 def getOriTblStruct():
 	oriTblStruct = """(
 						date date,
@@ -206,13 +222,15 @@ def getAnaTblStruct():
 						share integer,
 						price float,
 						total float,
-						rate float
+						rate float,
+						time integer,
+						oriRateTime float
 						);"""
 	return anaTblStruct
 
 def getSumTblStruct():
 	sumTblStruct = """(
-						type text,
+						code text,
 						opeTime integer,
 						win integer,
 						winRate float,
@@ -228,3 +246,58 @@ def getSumTblStruct():
 						mostBackMostHoldDate date
 						);"""
 	return sumTblStruct
+
+def getResultTblStruct():
+	resultTblStruct = """(
+						date date,
+						opeTime integer,
+						totalFund float,
+						unuseFund float,
+						unusePart integer,
+						singleFund float,
+						part1Code text,
+						part1Price float,
+						part1Share float,
+						part1Date date,
+						part2Code text,
+						part2Price float,
+						part2Share float,
+						part2Date date,
+						part3Code text,
+						part3Price float,
+						part3Share float,
+						part3Date date,
+						part4Code text,
+						part4Price float,
+						part4Share float,
+						part4Date date,
+						part5Code text,
+						part5Price float,
+						part5Share float,
+						part5Date date,
+						part6Code text,
+						part6Price float,
+						part6Share float,
+						part6Date date,
+						part7Code text,
+						part7Price float,
+						part7Share float,
+						part7Date date,
+						part8Code text,
+						part8Price float,
+						part8Share float,
+						part8Date date,
+						part9Code text,
+						part9Price float,
+						part9Share float,
+						part9Date date,
+						part10Code text,
+						part10Price float,
+						part10Share float,
+						part10Date date,
+						type text,
+						code text,
+						price float,
+						share float
+						);"""
+	return resultTblStruct

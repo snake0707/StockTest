@@ -3,7 +3,7 @@ import signalLogic
 
 def sellDonAndDual(row, moveList, sellPrice):
 	if len(moveList) == 0:
-		lastMove = [0, 0, 0, 0, 10000, 0]
+		lastMove = [0, 0, 0, 0, 10000, 0, 0, 0]
 	else :
 		lastMove = moveList[-1]
 	singleMove = []
@@ -12,13 +12,17 @@ def sellDonAndDual(row, moveList, sellPrice):
 	rate = curPrice / lastMove[3]
 	share = lastMove[2]
 	curHold = lastMove[4] + curPrice * share
+	time = lastMove[6]
+	oriRateTime = (curHold / 10000 - 1) / time
 
 	singleMove.extend(row[0:1])
 	singleMove.append("sell")
-	singleMove.append(share) 
+	singleMove.append(share)
 	singleMove.append(curPrice)
 	singleMove.append(curHold)
 	singleMove.append(rate)
+	singleMove.append(time)
+	singleMove.append(oriRateTime)
 
 	return singleMove
 
@@ -79,7 +83,7 @@ def buy(row, moveList):
 
 def buyDonAndDual(row, moveList, buyPrice):
 	if len(moveList) == 0:
-		lastMove = [0, 0, 0, 0, 10000, 0]
+		lastMove = [0, 0, 0, 0, 10000, 0, 0, 0]
 	else :
 		lastMove = moveList[-1]
 	singleMove = []
@@ -89,7 +93,9 @@ def buyDonAndDual(row, moveList, buyPrice):
 		curPrice = row[2]
 	share = lastMove[4] / curPrice
 	curHold = lastMove[4] - curPrice * share
-	rate = 0
+	rate = lastMove[5]
+	time = lastMove[6] + 1
+	oriRateTime = lastMove[7]
 
 	singleMove.extend(row[0:1])
 	singleMove.append("buy")
@@ -97,6 +103,8 @@ def buyDonAndDual(row, moveList, buyPrice):
 	singleMove.append(curPrice)
 	singleMove.append(curHold)
 	singleMove.append(rate)
+	singleMove.append(time)
+	singleMove.append(oriRateTime)
 
 	return singleMove
 
