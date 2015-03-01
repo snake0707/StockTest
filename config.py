@@ -15,46 +15,50 @@ def getTestCSVFilePath():
 	return path
 
 def getOriDatabaseName():
-	oriDatabaseName = "ori2010Database.db"
+	oriDatabaseName = "ori2012-2014Database.db"
 	return oriDatabaseName
 
 def getTestOriDatabaseName():
-	oriDatabaseName = "ori2010TestDatabase.db"
+	oriDatabaseName = "ori2010-2011TestDatabase.db"
 	return oriDatabaseName
 
 def getProDatabaseName():
-	#proDatabaseName = "proDonDatabase.db"
-	proDatabaseName = "proDualDatabase.db"
+	proDatabaseName = "proDon2012-2014Database.db"
+	#proDatabaseName = "proDual2012-2014Database.db"
 	return proDatabaseName
 
 def getTestProDatabaseName():
-	#proDatabaseName = "proTestDonDatabase.db"
-	proDatabaseName = "proTestDualDatabase.db"
+	proDatabaseName = "pro2010-2011TestDonDatabase.db"
+	#proDatabaseName = "proTestDualDatabase.db"
 	return proDatabaseName
 
 def getAnaDatabaseName():
-	#anaDatabaseName = "anaDonDatabase.db"
-	anaDatabaseName = "anaDualDatabase.db"
+	anaDatabaseName = "anaDon2012-2014Database.db"
+	#anaDatabaseName = "anaDual2012-2014Database.db"
 	return anaDatabaseName
 
 def getTestAnaDatabaseName():
-	#anaDatabaseName = "anaTestDonDatabase.db"
-	anaDatabaseName = "anaTestDualDatabase.db"
+	anaDatabaseName = "ana2010-2011TestDonDatabase.db"
+	#anaDatabaseName = "anaTestDualDatabase.db"
 	return anaDatabaseName
 
 def getSumDatabaseName():
-	#sumDatabaseName = "sumDonDatabase.db"
-	sumDatabaseName = "sumDualDatabase.db"
+	sumDatabaseName = "sumDon2012-2014Database.db"
+	#sumDatabaseName = "sumDual2012-2014Database.db"
 	return sumDatabaseName
 
 def getTestSumDatabaseName():
-	#sumDatabaseName = "sumTestDonDatabase.db"
-	sumDatabaseName = "sumTestDualDatabase.db"
+	sumDatabaseName = "sum2010-2011TestDonDatabase.db"
+	#sumDatabaseName = "sumTestDualDatabase.db"
 	return sumDatabaseName
 
 def getBeginDate():
-	beginDate = "2010/01/01"
+	beginDate = "2012/01/01"
 	return beginDate
+
+def getEndDate():
+	endDate = "2016/01/01"
+	return endDate
 
 def getKDJDay():
 	KDJDay = 9
