@@ -44,6 +44,7 @@ if __name__=='__main__':
 	for date in dateList:
 		buyOptList =[]
 		singleDate = date[0]
+		print(singleDate)
 		#for Result in resultList:
 		#	print(Result)
 		for tbl in tblList:

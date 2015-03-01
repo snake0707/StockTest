@@ -78,23 +78,23 @@ def buyAction(buyOptList, resultList, singleDate):
 		buyResultList =[]
 
 		for buyOpt in buyOptList:
-			print("before buy")
-			for result in resultList:
-				print(result)
-				print(len(resultList))
+			#print("before buy")
+			#for result in resultList:
+			#	print(result)
+			#	print(len(resultList))
 			buyResult = buy(curResult, buyOpt, singleDate)
-			print(buyResult)
-			print("before append")
-			for result in resultList:
-				print(result)
-				print(len(resultList))
+			#print(buyResult)
+			#print("before append")
+			#for result in resultList:
+			#	print(result)
+			#	print(len(resultList))
 			resultList.append(buyResult)
-			print("after append")
-			for result in resultList:
-				print(result)
-				print(len(resultList))
+			#print("after append")
+			#for result in resultList:
+			#	print(result)
+			#	print(len(resultList))
 			curResult = resultList[-1]
-			print(curResult)
+			#print(curResult)
 			
 def chooseBuyOpt(buyOptList):
 	for buyOpt in buyOptList:
