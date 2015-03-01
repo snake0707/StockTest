@@ -23,7 +23,10 @@ def sellAction(data, tbl, resultList, singleDate):
 
 def sell(curResult, part, singleDate):
 	partCodeIndex = (6, 10, 14, 18, 22, 26, 30, 34, 38, 42)
-	sellResult = curResult
+	sellResult =[]
+	for n in curResult:
+		sellResult.append(n)
+	#sellResult = curResult
 	
 	for num in partCodeIndex:
 		if curResult[num] == part[0]:
@@ -95,7 +98,7 @@ def buyAction(buyOptList, resultList, singleDate):
 			
 def chooseBuyOpt(buyOptList):
 	for buyOpt in buyOptList:
-		if buyOpt[6] < 3 or buyOpt[7] < 0.01:
+		if buyOpt[6] < 2 or buyOpt[7] < 0.00:
 			buyOptList.remove(buyOpt)
 
 def sortBuyOpt(buyOptList, leftPart):
