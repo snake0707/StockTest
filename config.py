@@ -23,7 +23,7 @@ def getOriDatabaseName():
 	return oriDatabaseName
 
 def getTestOriDatabaseName():
-	oriDatabaseName = "ori2010-2011TestDatabase.db"
+	oriDatabaseName = "ori2012-2014TestDatabase.db"
 	return oriDatabaseName
 
 def getProDatabaseName():
@@ -32,7 +32,7 @@ def getProDatabaseName():
 	return proDatabaseName
 
 def getTestProDatabaseName():
-	proDatabaseName = "pro2010-2011TestDonDatabase.db"
+	proDatabaseName = "pro2012-2014TestDonDatabase.db"
 	#proDatabaseName = "proTestDualDatabase.db"
 	return proDatabaseName
 
@@ -42,7 +42,7 @@ def getAnaDatabaseName():
 	return anaDatabaseName
 
 def getTestAnaDatabaseName():
-	anaDatabaseName = "ana2010-2011TestDonDatabase.db"
+	anaDatabaseName = "ana2012-2014TestDonDatabase.db"
 	#anaDatabaseName = "anaTestDualDatabase.db"
 	return anaDatabaseName
 
@@ -52,7 +52,7 @@ def getSumDatabaseName():
 	return sumDatabaseName
 
 def getTestSumDatabaseName():
-	sumDatabaseName = "sum2010-2011TestDonDatabase.db"
+	sumDatabaseName = "sum2012-2014TestDonDatabase.db"
 	#sumDatabaseName = "sumTestDualDatabase.db"
 	return sumDatabaseName
 
