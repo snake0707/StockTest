@@ -3,7 +3,7 @@ import os
 MA5Num = 7
 
 def getTestMode():
-	testMode = True
+	testMode = False
 	return testMode
 
 def getCSVFilePath():
@@ -136,7 +136,7 @@ def getLoseStopRate():
 	return 0.05
 
 def getHoldDays():
-	return 1000
+	return 10
 
 def getSumTblName():
 	sumTblName = "totalSum"

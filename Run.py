@@ -41,7 +41,12 @@ if __name__=='__main__':
 
 	totalTblDict = {}
 	singleTblDict = {}
+
+	read_time_begin = datetime.datetime.now()
+	print("read_time begin:")
+	print(read_time_begin)
 	for tbl in tblList:
+		print(tbl)
 		data = rfsqlite.getDataFromDB(rFile, tbl)
 		for singleData in data:
 			#print(singleData)
@@ -108,8 +113,16 @@ if __name__=='__main__':
 
 	w2sqlite.writeToDB(wFile, tbl, kind, resultList)
 
+	read_time_dur = time_begin - read_time_begin
 	time_end = datetime.datetime.now()
 	time_dur = time_end - time_begin
+	print("read_time_begin:")
+	print(read_time_begin)
+	print("read_time_dur:")
+	print(read_time_dur)
+	print("time_begin:")
 	print(time_begin)
+	print("time_end: ")
 	print(time_end)
+	print("time_dur: ")
 	print(time_dur)
