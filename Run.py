@@ -37,6 +37,22 @@ if __name__=='__main__':
 	defaultResult = [0, 0, 100000, 100000, 10, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "init", 0, 0, 0]
 	resultList.append(defaultResult)
 
+	totalTblDict = {}
+	singleTblDict = {}
+	for tbl in tblList:
+		data = rfsqlite.getDataFromDB(rFile, tbl)
+		for singleData in data:
+			#print(singleData)
+			curDate = singleData[0]
+			#singleTblDict = {curDate: singleData}
+			singleTblDict[curDate] = singleData
+			print(curDate)
+			print(singleTblDict)
+		#totalTblDict = {tbl: singleTblDict}
+		totalTblDict[tbl] = singleTblDict
+		#print(totalTblDict)
+
+
 	time_begin = datetime.datetime.now()
 	print("time begin:")
 	print(time_begin)

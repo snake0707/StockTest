@@ -98,6 +98,7 @@ def buyAction(buyOptList, resultList, singleDate):
 			
 def chooseBuyOpt(buyOptList):
 	for buyOpt in buyOptList:
+		#print(buyOpt)
 		if buyOpt[6] < 2 or buyOpt[7] < 0.00:
 			buyOptList.remove(buyOpt)
 
