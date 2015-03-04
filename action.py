@@ -35,8 +35,8 @@ def sell(curResult, part, singleDate):
 
 			sellResult[0] = singleDate
 			sellResult[1] = curResult[1] + 1
-			sellResult[2] = curResult[2] - curResult[num + 1] * curResult[num + 2] + part[1] * part[2]
-			sellResult[3] = curResult[3] + part[1] * part[2]
+			sellResult[2] = curResult[2] - curResult[num + 1] * curResult[num + 2] + part[1] * curResult[num + 2]
+			sellResult[3] = curResult[3] + part[1] * curResult[num + 2]
 			sellResult[4] = curResult[4] + 1
 			sellResult[5] = sellResult[3] / sellResult[4]
 			sellResult[46] = "sell"
