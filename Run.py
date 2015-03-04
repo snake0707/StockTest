@@ -22,6 +22,8 @@ if __name__=='__main__':
 
 		path = config.getCSVFilePath()
 
+	dateFile = config.getOriDatabaseName()
+
 	flagStr = config.getFlagStr()
 	kind = "Result"
 
@@ -31,7 +33,7 @@ if __name__=='__main__':
 
 	defaultTbl = config.getDefaultTbl()
 	listName = "date"
-	dateList = rfsqlite.getListFromDB(rFile ,defaultTbl, listName)
+	dateList = rfsqlite.getListFromDB(dateFile ,defaultTbl, listName)
 
 	resultList =[]
 	defaultResult = [0, 0, 100000, 100000, 10, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "init", 0, 0, 0]
@@ -46,11 +48,13 @@ if __name__=='__main__':
 			curDate = singleData[0]
 			#singleTblDict = {curDate: singleData}
 			singleTblDict[curDate] = singleData
-			print(curDate)
-			print(singleTblDict)
+			#print(curDate)
+			#print(singleTblDict)
 		#totalTblDict = {tbl: singleTblDict}
-		totalTblDict[tbl] = singleTblDict
-		#print(totalTblDict)
+		#print(tbl)
+		totalTblDict[tbl] = singleTblDict.copy()
+		singleTblDict.clear()
+	#print(totalTblDict)
 
 
 	time_begin = datetime.datetime.now()
@@ -64,10 +68,20 @@ if __name__=='__main__':
 		#for Result in resultList:
 		#	print(Result)
 		for tbl in tblList:
-			dataList = rfsqlite.getDataFromDBOnDate(rFile, tbl, singleDate)
+			#dataList = rfsqlite.getDataFromDBOnDate(rFile, tbl, singleDate)
 			
-			if dataList:
-				data = dataList[0]
+			#if dataList:
+				#data = dataList[0]
+				#print(data)
+
+
+			#print("======", tbl)
+			dict1 = totalTblDict[tbl]
+			#print(dict1)
+			data = dict1.get(singleDate)
+			#print("======", data)
+
+			if data:
 				#print(data)
 
 				if data[1] == "sell":

@@ -69,15 +69,16 @@ def update(sellResult):
 			sellResult.insert(45, 0)
 
 def buyAction(buyOptList, resultList, singleDate):
-	chooseBuyOpt(buyOptList)
-	if buyOptList:
+	qOptList = []
+	qOptList = chooseBuyOpt(buyOptList)
+	if qOptList:
 		#curResult = []
 		curResult = resultList[-1]
 		leftPart = curResult[4]
-		sortBuyOpt(buyOptList, leftPart)
+		sortBuyOpt(qOptList, leftPart)
 		buyResultList =[]
 
-		for buyOpt in buyOptList:
+		for buyOpt in qOptList:
 			#print("before buy")
 			#for result in resultList:
 			#	print(result)
@@ -97,15 +98,24 @@ def buyAction(buyOptList, resultList, singleDate):
 			#print(curResult)
 			
 def chooseBuyOpt(buyOptList):
+	qOptList = []
 	for buyOpt in buyOptList:
 		#print(buyOpt)
-		if buyOpt[6] < 2 or buyOpt[7] < 0.00:
-			buyOptList.remove(buyOpt)
+		if buyOpt[6] > 0 or buyOpt[7] > 0.00:
+			#print("before remove: ", buyOptList)
+			#print(buyOpt)
+			#buyOptList.remove(buyOpt)
+			#print("after remove: ", buyOptList)
+			qOptList.append(buyOpt)
+			#print("Q")
+			#print(qOptList)
 
-def sortBuyOpt(buyOptList, leftPart):
-	lenNum = len(buyOptList)
+	return qOptList
+
+def sortBuyOpt(qOptList, leftPart):
+	lenNum = len(qOptList)
 	if lenNum > leftPart:
-		del buyOptList[leftPart: lenNum]
+		del qOptList[leftPart: lenNum]
 
 def buy(curResult, buyOpt, singleDate):
 	partCodeIndex = (6, 10, 14, 18, 22, 26, 30, 34, 38, 42)
