@@ -109,7 +109,7 @@ def processDonchian(data, tHigh = 20, tLow = 10):
 
 	return curdata
 
-def processSnakeStrategy_1(data, dayLast = 5):
+def processSnakeStrategy_1(data, dayLast = 3):
 	curdata = map(list, data)
 
 	sSEndList = []

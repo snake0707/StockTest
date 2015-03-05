@@ -3,7 +3,7 @@ import os
 MA5Num = 7
 
 def getTestMode():
-	testMode = True
+	testMode = False
 	return testMode
 
 def getCSVFilePath():
@@ -27,33 +27,39 @@ def getTestOriDatabaseName():
 	return oriDatabaseName
 
 def getProDatabaseName():
-	proDatabaseName = "proDon2012-2014Database.db"
+	#proDatabaseName = "proDon2012-2014Database.db"
 	#proDatabaseName = "proDual2012-2014Database.db"
+	proDatabaseName = "proSS_1_2012-2014Database.db"
 	return proDatabaseName
 
 def getTestProDatabaseName():
-	proDatabaseName = "pro2012-2014TestDonDatabase.db"
+	#proDatabaseName = "pro2012-2014TestDonDatabase.db"
 	#proDatabaseName = "proTestDualDatabase.db"
+	proDatabaseName = "pro2012-2014TestSS_1_Database.db"
 	return proDatabaseName
 
 def getAnaDatabaseName():
-	anaDatabaseName = "anaDon2012-2014Database.db"
+	#anaDatabaseName = "anaDon2012-2014Database.db"
 	#anaDatabaseName = "anaDual2012-2014Database.db"
+	anaDatabaseName = "anaSS_1_2012-2014Database.db"
 	return anaDatabaseName
 
 def getTestAnaDatabaseName():
-	anaDatabaseName = "ana2012-2014TestDonDatabase.db"
+	#anaDatabaseName = "ana2012-2014TestDonDatabase.db"
 	#anaDatabaseName = "anaTestDualDatabase.db"
+	anaDatabaseName = "ana2012-2014TestSS_1_Database.db"
 	return anaDatabaseName
 
 def getSumDatabaseName():
-	sumDatabaseName = "sumDon2012-2014Database.db"
+	#sumDatabaseName = "sumDon2012-2014Database.db"
 	#sumDatabaseName = "sumDual2012-2014Database.db"
+	sumDatabaseName = "sumSS_1_2012-2014Database.db"
 	return sumDatabaseName
 
 def getTestSumDatabaseName():
-	sumDatabaseName = "sum2012-2014TestDonDatabase.db"
+	#sumDatabaseName = "sum2012-2014TestDonDatabase.db"
 	#sumDatabaseName = "sumTestDualDatabase.db"
+	sumDatabaseName = "sum2012-2014TestSS_1_Database.db"
 	return sumDatabaseName
 
 def getResultDatabaseName():
@@ -130,12 +136,15 @@ def getLastBuyDate():
 	return 0
 
 def getWinStopRate():
-	return 0.05
+	return 0.2
 
 def getLoseStopRate():
-	return 0.01
+	return 0.05
 
 def getHoldDays():
+	return 10
+
+def getSS_1LastDay():
 	return 5
 
 def getSumTblName():

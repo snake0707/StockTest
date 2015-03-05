@@ -42,7 +42,11 @@ if __name__=='__main__':
 		#moveList = dataAnalyze.ana(data)
 		#print(moveList)
 		#moveList = dataAnalyze.anaDonchian(data)
-		moveList = dataAnalyze.anaDonAndDual(data)
+		#moveList = dataAnalyze.anaDonAndDual(data)
+		moveList = dataAnalyze.anaSS_1(data)
+
+		if len(moveList) % 2 == 1:
+			moveList.pop()
 
 		sumList = summarize.sum(tbl, moveList)
 

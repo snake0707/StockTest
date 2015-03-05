@@ -162,12 +162,14 @@ def anaSS_1(data):
 	moveList = []
 	lastNDataList = []
 
+	lastDay = config.getSS_1LastDay()
+
 	hold = False
 
 	for row in curdata:
 		singleMove = []
 		if hold:
-			sellPrice = signalLogic.sellSS_1Price(row, moveList[-1], lastNDataList)
+			sellPrice = signalLogic.sellSS_1Price(row, moveList[-1])
 			if sellPrice:
 				singleMove = sellDonAndDual(row, moveList, sellPrice)
 				moveList.append(singleMove)
@@ -180,7 +182,7 @@ def anaSS_1(data):
 				hold = True
 
 		lastNDataList.append(row)
-		if len(lastNDataList) > 5:
+		if len(lastNDataList) > lastDay:
 			del lastNDataList[0]
 
 	return moveList

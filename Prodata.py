@@ -21,9 +21,9 @@ if __name__=='__main__':
 	flagStr = config.getFlagStr()
 	#kind = "ProMA"
 	#kind = "ProKDJ"
-	kind = "ProDonchian"
+	#kind = "ProDonchian"
 	#kind = "ProDualThrust"
-	#kind = "ProSnakeStrategy_1"
+	kind = "ProSnakeStrategy_1"
 
 	tblList = getname.getTblList(path, flagStr)
 
@@ -42,13 +42,14 @@ if __name__=='__main__':
 		#processed_data = dataprocess.processKDJ(data)
 
 		#Donchian Pro
-		processed_data = dataprocess.processDonchian(data)
+		#processed_data = dataprocess.processDonchian(data)
 
 		#DualThrust Pro
 		#processed_data = dataprocess.processDualThrust(data)
 
-		#SnakeStrategy_1
-		#processed_data = dataprocess.processSnakeStrategy_1(data)
+		#SnakeStrategy_1 Pro
+		lastDay = config.getSS_1LastDay()
+		processed_data = dataprocess.processSnakeStrategy_1(data, lastDay)
 
 		w2sqlite.writeToDB(wFile, tbl, kind, processed_data)
 
