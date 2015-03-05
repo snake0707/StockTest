@@ -157,6 +157,35 @@ def anaDonchian(data):
 
 	return moveList
 
+def anaSS_1(data):
+	curdata = map(list, data)
+	moveList = []
+	lastNDataList = []
+
+	hold = False
+
+	for row in curdata:
+		singleMove = []
+		if hold:
+			sellPrice = signalLogic.sellSS_1Price(row, moveList[-1], lastNDataList)
+			if sellPrice:
+				singleMove = sellDonAndDual(row, moveList, sellPrice)
+				moveList.append(singleMove)
+				hold = False
+		else :
+			buyPrice = signalLogic.buySS_1Price(row, lastNDataList)
+			if buyPrice:
+				singleMove = buyDonAndDual(row, moveList, buyPrice)
+				moveList.append(singleMove)
+				hold = True
+
+		lastNDataList.append(row)
+		if len(lastNDataList) > 5:
+			del lastNDataList[0]
+
+	return moveList
+
+
 def anaDonAndDual(data):
 	curdata = map(list, data)
 	moveList = []

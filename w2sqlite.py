@@ -164,6 +164,13 @@ def writeToDB(dbFile, tbl, kind, values = []):
 		createTbl(dbFile, tbl, tblStruct)
 
 		insertTbl(dbFile, tbl, values)
+	elif kind == "ProSnakeStrategy_1":
+		tblStruct = config.getProSnakeStrategy_1TblStruct()
+
+		dropTbl(dbFile, tbl)
+		createTbl(dbFile, tbl, tblStruct)
+
+		insertTbl(dbFile, tbl, values)
 	elif kind == "Ana":
 		tblStruct = config.getAnaTblStruct()
 

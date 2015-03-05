@@ -23,6 +23,7 @@ if __name__=='__main__':
 	#kind = "ProKDJ"
 	kind = "ProDonchian"
 	#kind = "ProDualThrust"
+	#kind = "ProSnakeStrategy_1"
 
 	tblList = getname.getTblList(path, flagStr)
 
@@ -45,6 +46,9 @@ if __name__=='__main__':
 
 		#DualThrust Pro
 		#processed_data = dataprocess.processDualThrust(data)
+
+		#SnakeStrategy_1
+		#processed_data = dataprocess.processSnakeStrategy_1(data)
 
 		w2sqlite.writeToDB(wFile, tbl, kind, processed_data)
 

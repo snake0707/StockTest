@@ -3,7 +3,7 @@ import os
 MA5Num = 7
 
 def getTestMode():
-	testMode = False
+	testMode = True
 	return testMode
 
 def getCSVFilePath():
@@ -130,13 +130,13 @@ def getLastBuyDate():
 	return 0
 
 def getWinStopRate():
-	return 0.2
-
-def getLoseStopRate():
 	return 0.05
 
+def getLoseStopRate():
+	return 0.01
+
 def getHoldDays():
-	return 10
+	return 5
 
 def getSumTblName():
 	sumTblName = "totalSum"
@@ -202,6 +202,20 @@ def getProDonchianTblStruct():
 	return proTblStruct
 
 def getProDualThrustTblStruct():
+	proTblStruct = """(
+						date date,
+						N1 float,
+						N2 float,
+						N3 float,
+						N4 float,
+						N5 float,
+						N6 float,
+						buyPrice float,
+						sellPrice float
+						);"""
+	return proTblStruct
+
+def getProSnakeStrategy_1TblStruct():
 	proTblStruct = """(
 						date date,
 						N1 float,

@@ -109,6 +109,43 @@ def processDonchian(data, tHigh = 20, tLow = 10):
 
 	return curdata
 
+def processSnakeStrategy_1(data, dayLast = 5):
+	curdata = map(list, data)
+
+	sSEndList = []
+	sSHighList = []
+	sSLowList = []
+
+	i_end = config.getEndNum()
+	i_high = config.getHighNum()
+	i_low = config.getLowNum()
+
+	for row in curdata:
+		if len(sSEndList) == 0:
+			ma_n = row[i_end]
+			high_n = row[i_high]
+			low_n = row[i_low]
+		else :
+			ma_n = average(sSEndList)
+			high_n = high(sSHighList)
+			low_n = low(sSLowList)
+
+		buyPrice = (ma_n + low_n) / 2
+		sellPrice = (ma_n + high_n) / 2
+		row.append(buyPrice)
+		row.append(sellPrice)
+
+		sSEndList.append(row[i_end])
+		sSHighList.append(row[i_high])
+		sSLowList.append(row[i_low])
+		if len(sSEndList) > dayLast:
+			del sSEndList[0]
+			del sSHighList[0]
+			del sSLowList[0]
+
+	return curdata
+
+
 def processDualThrust(data, tN = 10, Ks = 0.5, Kx = 0.5):
 	curdata = map(list, data)
 
