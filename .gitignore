@@ -60,4 +60,5 @@ target/
 # My configurations:
 csv
 csvTest
+csvOther
 *.db
