@@ -145,7 +145,7 @@ def getHoldDays():
 	return 10
 
 def getSS_1LastDay():
-	return 5
+	return 3
 
 def getSumTblName():
 	sumTblName = "totalSum"

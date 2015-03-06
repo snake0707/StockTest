@@ -102,7 +102,7 @@ def chooseBuyOpt(buyOptList):
 	qOptList = []
 	for buyOpt in buyOptList:
 		#print(buyOpt)
-		if buyOpt[6] > 0 or buyOpt[7] > 0.00:
+		if buyOpt[6] > 5 and buyOpt[7] > 0.01:
 			#print("before remove: ", buyOptList)
 			#print(buyOpt)
 			#buyOptList.remove(buyOpt)
