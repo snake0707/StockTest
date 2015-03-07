@@ -1,14 +1,14 @@
 import os
 
-def sellAction(data, tbl, resultList, singleDate):
+def sellAction(sellOpt, resultList, singleDate):
 	curResult = resultList[-1]
 	if curResult[4] == 10:
 		print("Error: No Hold Stock")
 		return None
 
-	partXCode = tbl
-	partXPrice = data[3]
-	partXShare = data[2]
+	partXCode = sellOpt[-1]
+	partXPrice = sellOpt[3]
+	partXShare = sellOpt[2]
 	partXDate = singleDate
 
 	part = [partXCode, partXPrice, partXShare, partXDate]
@@ -16,8 +16,6 @@ def sellAction(data, tbl, resultList, singleDate):
 	sellResult = sell(curResult, part, singleDate)
 	if sellResult:
 		update(sellResult)
-		#print("length: ", len(sellResult))
-		#print(sellResult)
 
 	return sellResult
 
@@ -80,36 +78,15 @@ def buyAction(buyOptList, resultList, singleDate):
 		buyResultList =[]
 
 		for buyOpt in qOptList:
-			#print("before buy")
-			#for result in resultList:
-			#	print(result)
-			#	print(len(resultList))
 			buyResult = buy(curResult, buyOpt, singleDate)
-			#print(buyResult)
-			#print("before append")
-			#for result in resultList:
-			#	print(result)
-			#	print(len(resultList))
 			resultList.append(buyResult)
-			#print("after append")
-			#for result in resultList:
-			#	print(result)
-			#	print(len(resultList))
 			curResult = resultList[-1]
-			#print(curResult)
 			
 def chooseBuyOpt(buyOptList):
 	qOptList = []
 	for buyOpt in buyOptList:
-		#print(buyOpt)
 		if buyOpt[6] > 0 and buyOpt[7] > 0.00:
-			#print("before remove: ", buyOptList)
-			#print(buyOpt)
-			#buyOptList.remove(buyOpt)
-			#print("after remove: ", buyOptList)
 			qOptList.append(buyOpt)
-			#print("Q")
-			#print(qOptList)
 
 	return qOptList
 
@@ -124,8 +101,6 @@ def buy(curResult, buyOpt, singleDate):
 	buyResult = []
 	for n in curResult:
 		buyResult.append(n)
-	#buyResult = curResult
-	#print(buyResult)
 
 	partXCode = buyOpt[-1]
 	partXPrice = buyOpt[3]
