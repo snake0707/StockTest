@@ -41,6 +41,7 @@ def sell(curResult, part, singleDate):
 			sellResult[47] = part[0]
 			sellResult[48] = part[1]
 			sellResult[49] = sellResult[num + 2]
+			sellResult[50] = sellResult[num + 3]
 			sellResult[num] = 0
 			sellResult[num + 1] = 0
 			sellResult[num + 2] = 0
@@ -126,6 +127,7 @@ def buy(curResult, buyOpt, singleDate):
 	buyResult[47] = part[0]
 	buyResult[48] = part[1]
 	buyResult[49] = part[2]
+	buyResult[50] = part[3]
 
 	return buyResult
 

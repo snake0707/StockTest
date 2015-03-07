@@ -36,7 +36,7 @@ if __name__=='__main__':
 	dateList = rfsqlite.getListFromDB(dateFile ,defaultTbl, listName)
 
 	resultList =[]
-	defaultResult = [0, 0, 100000, 100000, 10, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "init", 0, 0, 0]
+	defaultResult = [0, 0, 100000, 100000, 10, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "init", 0, 0, 0, 0]
 	resultList.append(defaultResult)
 
 	totalTblDict = {}

@@ -19,6 +19,7 @@ def getDefaultTbl():
 	return defaultTbl
 
 def getOriDatabaseName():
+	#oriDatabaseName = "oriDatabase.db"
 	oriDatabaseName = "ori2012-2014Database.db"
 	return oriDatabaseName
 
@@ -27,6 +28,7 @@ def getTestOriDatabaseName():
 	return oriDatabaseName
 
 def getProDatabaseName():
+	#proDatabaseName = "proSS_1_Database.db"
 	#proDatabaseName = "proDon2012-2014Database.db"
 	#proDatabaseName = "proDual2012-2014Database.db"
 	proDatabaseName = "proSS_1_2012-2014Database.db"
@@ -39,6 +41,7 @@ def getTestProDatabaseName():
 	return proDatabaseName
 
 def getAnaDatabaseName():
+	#anaDatabaseName = "anaSS_1_Database.db"
 	#anaDatabaseName = "anaDon2012-2014Database.db"
 	#anaDatabaseName = "anaDual2012-2014Database.db"
 	anaDatabaseName = "anaSS_1_2012-2014Database.db"
@@ -51,6 +54,7 @@ def getTestAnaDatabaseName():
 	return anaDatabaseName
 
 def getSumDatabaseName():
+	#sumDatabaseName = "sumSS_1_Database.db"
 	#sumDatabaseName = "sumDon2012-2014Database.db"
 	#sumDatabaseName = "sumDual2012-2014Database.db"
 	sumDatabaseName = "sumSS_1_2012-2014Database.db"
@@ -63,7 +67,8 @@ def getTestSumDatabaseName():
 	return sumDatabaseName
 
 def getResultDatabaseName():
-	resultDatabaseName = "resultDatabase.db"
+	#resultDatabaseName = "resultSS_1_Database.db"
+	resultDatabaseName = "resultSS_1_2012-2014Database.db"
 	return resultDatabaseName
 
 def getTestResultDatabaseName():
@@ -75,7 +80,7 @@ def getBeginDate():
 	return beginDate
 
 def getEndDate():
-	endDate = "2016/01/01"
+	endDate = "2020/01/01"
 	return endDate
 
 def getKDJDay():
@@ -136,13 +141,13 @@ def getLastBuyDate():
 	return 0
 
 def getWinStopRate():
-	return 0.2
+	return 1
 
 def getLoseStopRate():
 	return 0.05
 
 def getHoldDays():
-	return 10
+	return 1000
 
 def getSS_1LastDay():
 	return 3
@@ -321,6 +326,7 @@ def getResultTblStruct():
 						type text,
 						code text,
 						price float,
-						share float
+						share float,
+						buydate date
 						);"""
 	return resultTblStruct
