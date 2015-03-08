@@ -56,6 +56,14 @@ def getTestResultDatabaseName():
 	resultDatabaseName = "resultTestDatabase.db"
 	return resultDatabaseName
 
+def getChooseDatabaseName():
+	chooseDatabaseName = "choose.db"
+	return chooseDatabaseName
+
+def getTestChooseDatabaseName():
+	chooseDatabaseName = "chooseTest.db"
+	return chooseDatabaseName
+
 def getStockCodeDatabaseName():
 	stockCodeDatabaseName = "SHZZStockCode.db"
 	return stockCodeDatabaseName
@@ -128,6 +136,10 @@ def getResultTblName():
 	resultTblName = "result"
 	return resultTblName
 
+def getChooseTblName():
+	chooseTblName = "choose"
+	return chooseTblName	
+
 def getOriTblStruct():
 	oriTblStruct = """(
 						date date,
@@ -185,6 +197,15 @@ def getSumTblStruct():
 						mostBackMostHoldDate date
 						);"""
 	return sumTblStruct
+
+def getChooseTblStruct():
+	chooseTblStruct = """(
+						code text,
+						buyPrice float,
+						sellPrice float,
+						rate float
+						);"""
+	return chooseTblStruct
 
 def getResultTblStruct():
 	resultTblStruct = """(

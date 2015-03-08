@@ -187,6 +187,21 @@ def anaSS_1(data):
 
 	return moveList
 
+def chooseQstock(data, tbl):
+	curdata = map(list, data)
+	singleChoose = []
+	lastDay = config.getSS_1LastDay()
+	endData = curdata[-1]
+	lastNDataList = curdata[-(lastDay + 1):-1]
+
+	buyPrice = signalLogic.chooseBuyPrice(endData, lastNDataList)
+	i_sell = config.getSellPriceNum()
+	sellPrice = endData[i_sell]
+	if buyPrice:
+		rate = sellPrice / buyPrice
+		singleChoose = [tbl, buyPrice, sellPrice, rate]
+
+	return singleChoose
 
 def anaDonAndDual(data):
 	curdata = map(list, data)

@@ -51,7 +51,7 @@ def insertTbl(dbFile, tbl, values):
 	insert_sql = "insert into " + tbl + " values "
 
 	for row in values:
-		if row[0] > dateBegin and row[0] < dateEnd:
+		if (row[0] > dateBegin and row[0] < dateEnd) or row[0] == 0:
 			strrow = map(str, row)
 			#print(row[0])
 			#print(dateBegin)
@@ -196,6 +196,14 @@ def writeToDB(dbFile, tbl, kind, values = []):
 		createTbl(dbFile, resultTbl, tblStruct)
 
 		insertTbl(dbFile, resultTbl, values)
+	elif kind == "Choose":
+		tblStruct = config.getChooseTblStruct()
+
+		resultTbl = config.getChooseTblName()
+		dropTbl(dbFile, resultTbl)
+		createTbl(dbFile, resultTbl, tblStruct)
+
+		insertSumTbl(dbFile, resultTbl, values)
 
 # test ================
 if __name__=='__main__':

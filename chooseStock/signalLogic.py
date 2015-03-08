@@ -74,6 +74,36 @@ def buySS_1Price(row, lastNDataList):
 
 	return singleBuyPrice
 
+def chooseBuyPrice(endData, lastNDataList):
+	singleBuyPrice = 0.0
+
+	lastDay = config.getSS_1LastDay()
+
+	if len(lastNDataList) < (lastDay - 1):
+		return singleBuyPrice
+
+	ma_n = 0.0
+
+	i_high = config.getHighNum()
+	i_low = config.getLowNum()
+	i_end = config.getEndNum()
+	i_buy = config.getBuyPriceNum()
+	i_sell = config.getSellPriceNum()
+
+	for data in lastNDataList:
+		ma_n = ma_n + data[i_end]
+	ma_n = ma_n / len(lastNDataList)
+
+	for data in lastNDataList:
+		if ma_n > data[i_high] or ma_n < data[i_low]:
+			return singleBuyPrice
+
+	rate = endData[i_sell] / endData[i_buy]
+	if rate >= 1.05:
+		singleBuyPrice = endData[i_buy]
+
+	return singleBuyPrice
+
 def sellSS_1Price(row, lastBuy):
 	singleSellPrice = 0.0
 

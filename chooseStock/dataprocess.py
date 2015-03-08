@@ -111,6 +111,11 @@ def processDonchian(data, tHigh = 20, tLow = 10):
 
 def processSnakeStrategy_1(data, dayLast = 3):
 	curdata = map(list, data)
+	#print(curdata)
+
+	addData = [0, 0, 0, 0, 0, 0, 0]
+	curdata.append(addData)
+	#print(curdata)
 
 	sSEndList = []
 	sSHighList = []

@@ -65,11 +65,12 @@ if __name__=="__main__":
     tbl = "stock"
 
     #day = "6M"
-    day = "6M"
-    code = u"000001"
-    place = "SHA"
+    #daily update
+    day = "1d"
+    #code = u"000001"
+    #place = "SHA"
     #print(code)
-    outDayKCsv(code, place, day)
+    #outDayKCsv(code, place, day)
 
     #print(time.clock())
     #time.sleep(10)
@@ -86,8 +87,8 @@ if __name__=="__main__":
         place = codeStr[:3]
         #print(code)
         #print(place)
-        #outDayKCsv(code, place, day)
-        #time.sleep(0.1)
+        outDayKCsv(code, place, day)
+        time.sleep(0.1)
 
 
     #print(codeList[0])
