@@ -1,5 +1,4 @@
 import sqlite3
-import dataprocess
 
 def getDataFromDB(dbFilePath, tbl):
 	con = sqlite3.connect(dbFilePath)
