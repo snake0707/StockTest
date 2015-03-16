@@ -84,6 +84,7 @@ def sellSS_1Price(row, lastBuy):
 	i_sell = config.getSellPriceNum()
 
 	if row[i_high] > row[i_sell] and row[i_end] < row[i_sell]:
+	#if row[i_high] > row[i_sell]:
 		singleSellPrice = row[i_sell]
 		return singleSellPrice
 

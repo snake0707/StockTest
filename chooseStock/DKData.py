@@ -6,13 +6,15 @@ import datetime
 import rfsqlite
 import config
 import os
+import getname
 from collections import Iterable
 
 #------------------------------------------------------------------------------
 def outDayKCsv(code, place, day, seconds = u"86400"):
-    #userMainUrl = "http://www.google.com/finance/getprices?q=000001&x=SHA&i=86400&p=6M&f=d,c,v,o,h,l";
+    #userMainUrl = "http://www.google.com/finance/getprices?q=000001&x=SHA&i=86400&p=2d&f=d,c,v,o,h,l";
     userMainUrl = "http://www.google.com/finance/getprices?q=" + code + "&x=" + place + "&i=" + seconds + "&p=" + day + "&f=d,c,v,o,h,l";
-    print(userMainUrl)
+    #print(userMainUrl)
+    print(code, place)
     req = urllib2.Request(userMainUrl);
     resp = urllib2.urlopen(req);
     respHtml = resp.read();
@@ -34,7 +36,7 @@ def outDayKCsv(code, place, day, seconds = u"86400"):
     pDataList = []
     #0:date 	1:open		2:high		3:low		4:close		5:volume	6:tVolume
     for singleList in dataList:
-    	print(singleList)
+    	#print(singleList)
     	pSingleList = []
     	if singleList == firstData:
     		date = time.strftime("%Y/%m/%d", time.gmtime(float(firstData[0])))
@@ -76,7 +78,13 @@ if __name__=="__main__":
     #time.sleep(10)
     #print(time.clock())
 
+    #path = config.getCSVFilePath()
+    #flagStr = config.getFlagStr()
+
+    #codeList = getname.getTblList(path, flagStr)
+    #print(codeList)
     codeList = rfsqlite.getDataFromDB(rFile, tbl)
+    #print(codeList)
 
     time_begin = datetime.datetime.now()
     print(time_begin)
