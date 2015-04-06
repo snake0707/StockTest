@@ -45,7 +45,7 @@ def getSumDatabaseName():
 	return sumDatabaseName
 
 def getTestSumDatabaseName():
-	sumDatabaseName = "sum2TestDatabase.db"
+	sumDatabaseName = "sumTestDatabase.db"
 	return sumDatabaseName
 
 def getResultDatabaseName():
@@ -203,7 +203,9 @@ def getChooseTblStruct():
 						code text,
 						buyPrice float,
 						sellPrice float,
-						rate float
+						rate float,
+						oriRateTime float,
+						time integer
 						);"""
 	return chooseTblStruct
 

@@ -12,12 +12,18 @@ if __name__=='__main__':
 
 	if testMode:
 		rFile = config.getTestProDatabaseName()
+
+		rAnaFile = config.getTestAnaDatabaseName()
+
 		wFile = config.getTestChooseDatabaseName()
 		sumFile = config.getTestSumDatabaseName()
 
 		path = config.getTestCSVFilePath()
 	else :
 		rFile = config.getProDatabaseName()
+
+		rAnaFile= config.getAnaDatabaseName()
+
 		wFile = config.getChooseDatabaseName()
 		sumFile = config.getSumDatabaseName()
 
@@ -28,6 +34,25 @@ if __name__=='__main__':
 
 	tblList = getname.getTblList(path, flagStr)
 	totalChoose = []
+
+
+	#read Data from AnaDatabase
+	totalTblDict = {}
+	for tbl in tblList:
+		print(tbl)
+		anaData = rfsqlite.getDataFromDB(rAnaFile, tbl)
+		#print(anaData)
+		singleAnaData = []
+		if anaData:
+			singleAnaData = anaData[-1]
+			if singleAnaData[0] == 0:
+				singleAnaData = anaData[-2]
+				if singleAnaData == anaData[0]:
+					singleAnaData = []
+				else :
+					singleAnaData = anaData[-3]
+		totalTblDict[tbl] = singleAnaData
+	#read Data END
 
 	time_begin = datetime.datetime.now()
 	print(time_begin)
@@ -43,6 +68,21 @@ if __name__=='__main__':
 			singleChoose = dataAnalyze.chooseQstock(data, tbl)
 
 		if singleChoose:
+			chooseAnaData = totalTblDict.get(tbl)
+
+			oriRateTime = 0.0
+			time = 0
+			level = -10
+			if chooseAnaData:
+				oriRateTime = chooseAnaData[7]
+				time = chooseAnaData[6]
+			#if oriRateTime >= 0.6 && time >= 6:
+			#	level = 5
+			#elif (oriRateTime >= 0.3 && && time >= 6) 
+
+			singleChoose.append(oriRateTime)
+			singleChoose.append(time)
+
 			totalChoose.append(singleChoose)
 
 	w2sqlite.writeToDB(wFile, tbl, kind, totalChoose)
