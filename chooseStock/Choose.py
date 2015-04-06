@@ -76,12 +76,20 @@ if __name__=='__main__':
 			if chooseAnaData:
 				oriRateTime = chooseAnaData[7]
 				time = chooseAnaData[6]
-			#if oriRateTime >= 0.6 && time >= 6:
-			#	level = 5
-			#elif (oriRateTime >= 0.3 && && time >= 6) 
+			# if oriRateTime >= 0.6 & time >= 6:
+			# 	level = 5
+			# elif (oriRateTime >= 0.3 & time >= 6) || (oriRateTime >= 0.6 & time >= 3):
+			# 	level = 4
+			# elif (oriRateTime >= 0.3 & time >= 3) || (oriRateTime >= 0.6 & time >= 1):
+			# 	level = 3
+			# elif (oriRateTime > 0.0 & time >= 1):
+			# 	level = 2
+			# elif :
+			# 	level = 1
 
 			singleChoose.append(oriRateTime)
 			singleChoose.append(time)
+			# singleChoose.append(level)
 
 			totalChoose.append(singleChoose)
 
