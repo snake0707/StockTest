@@ -129,10 +129,15 @@ def processSnakeStrategy_1(data, dayLast = 3):
 			ma_n = average(sSEndList)
 			high_n = high(sSHighList)
 			low_n = low(sSLowList)
+
+		# 将N日均价改为最后一日的收盘价
 		end_last = row[i_end]
 
 		buyPrice = (end_last + low_n) / 2
 		sellPrice = (end_last + high_n) / 2
+
+		# buyPrice = (ma_n + low_n) / 2
+		# sellPrice = (ma_n + high_n) / 2
 		row.append(buyPrice)
 		row.append(sellPrice)
 
