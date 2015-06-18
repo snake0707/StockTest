@@ -134,9 +134,10 @@ def processSnakeStrategy_1(data, dayLast = 3):
 			ma_n = average(sSEndList)
 			high_n = high(sSHighList)
 			low_n = low(sSLowList)
+		end_last = row[i_end]
 
-		buyPrice = (ma_n + low_n) / 2
-		sellPrice = (ma_n + high_n) / 2
+		buyPrice = (end_last + low_n) / 2
+		sellPrice = (end_last + high_n) / 2
 		row.append(buyPrice)
 		row.append(sellPrice)
 
