@@ -44,14 +44,16 @@ def getFileDict(path, flagStr = []):
 # test ===================
 if __name__=='__main__':
 
-	path = "/Users/oas/Documents/work/slot/tools/sqlite/getname/csv"
+	path = "/Users/libin/snake/work/python/stock/pastDataAna/csvTest"
+	# path = "/Users/oas/Documents/work/slot/tools/sqlite/getname/csv"
 	flagStr = '.csv'
 	fileDict = getFileDict(path, flagStr)
 	tblList = getTblList(path, flagStr)
 
 	print(tblList)
-	for tbl in tblList:
-		print(tbl)
+	for tbl, fileName in tblList, fileDict:
+		print(tbl, fileName)
+
 
 	#print(fileDict)
 	#for filePath, tbl in fileDict.items():
