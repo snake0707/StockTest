@@ -86,6 +86,7 @@ def buyAction(buyOptList, resultList, singleDate):
 def chooseBuyOpt(buyOptList):
 	qOptList = []
 	for buyOpt in buyOptList:
+		# decide what to choosepy
 		if buyOpt[6] > 0 and buyOpt[7] > 0.00:
 			qOptList.append(buyOpt)
 

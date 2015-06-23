@@ -34,6 +34,29 @@ if __name__=='__main__':
 	defaultTbl = config.getDefaultTbl()
 	listName = "date"
 	dateList = rfsqlite.getListFromDB(dateFile ,defaultTbl, listName)
+	
+	# defaultTblData = rfsqlite.getDataFromDB(dateFile, defaultTbl)
+
+	# dateAndBuySignalList = []
+
+
+	# length = len(defaultTblData)
+
+	# for i in range(0, length):
+	# 	data = defaultTblData[i]
+	# 	singleDateAndBuySignal = []
+	# 	date = data[0]
+	# 	buySignal = False
+	# 	if i > 2 and defaultTblData[i - 1][4] > defaultTblData[i - 2][4]:
+	# 		buySignal = True
+	# 	singleDateAndBuySignal = [date, buySignal]
+	# 	dateAndBuySignalList.append(singleDateAndBuySignal)
+
+	# for data in dateAndBuySignalList:
+	# 	print(data)
+		
+
+
 
 	resultList =[]
 	defaultResult = [0, 0, 100000, 100000, 10, 10000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "init", 0, 0, 0, 0]
@@ -59,6 +82,7 @@ if __name__=='__main__':
 	print(time_begin)
 
 	for date in dateList:
+	# for date in dateAndBuySignalList:
 		buyOptList = []
 		sellOptList = []
 		singleDate = date[0]
@@ -73,6 +97,7 @@ if __name__=='__main__':
 					sellOpt.append(tbl)
 					sellOptList.append(sellOpt)
 				else :
+				# elif date[1]:
 					buyOpt = list(data)
 					buyOpt.append(tbl)
 					buyOptList.append(buyOpt)
