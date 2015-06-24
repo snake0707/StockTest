@@ -67,6 +67,11 @@ def buySS_1Price(row, lastNDataList):
 		if ma_n > data[i_high] or ma_n < data[i_low]:
 			return singleBuyPrice
 
+	# buyPrice over lastEndPrice, return 0
+	lastRow = lastNDataList[-1]
+	if row[i_buy] >= lastRow[i_end]:
+		return singleBuyPrice
+
 	if row[i_low] < row[i_buy] and row[i_high] > row[i_buy]:
 		rate = row[i_sell] / row[i_buy]
 		if rate >= 1.05:
