@@ -58,6 +58,7 @@ def buySS_1Price(row, lastNDataList):
 	i_end = config.getEndNum()
 	i_buy = config.getBuyPriceNum()
 	i_sell = config.getSellPriceNum()
+	i_open = config.getOpenNum()
 
 	for data in lastNDataList:
 		ma_n = ma_n + data[i_end]
@@ -71,6 +72,10 @@ def buySS_1Price(row, lastNDataList):
 	lastRow = lastNDataList[-1]
 	if row[i_buy] >= lastRow[i_end]:
 		return singleBuyPrice
+
+	# buyPrice over todayOpenPrice, return 0
+	# if row[i_buy] >= row[i_open]:
+	# 	return singleBuyPrice
 
 	if row[i_low] < row[i_buy] and row[i_high] > row[i_buy]:
 		rate = row[i_sell] / row[i_buy]
