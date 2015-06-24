@@ -87,9 +87,9 @@ def chooseBuyOpt(buyOptList):
 	qOptList = []
 	for buyOpt in buyOptList:
 		# decide what to choosepy
-		# if buyOpt[6] > 0 and buyOpt[7] > 0.00:
+		if buyOpt[6] > 0 and buyOpt[7] > 0.00:
 		# just decide from last op rate
-		if buyOpt[5] > 1:
+		# if buyOpt[5] > 1:
 			qOptList.append(buyOpt)
 
 	return qOptList
