@@ -69,6 +69,12 @@ def buySS_1Price(row, lastNDataList):
 
 	# buyPrice over lastEndPrice, return 0
 	lastRow = lastNDataList[-1]
+
+	# print(lastRow)
+	# print(row[i_buy])
+	# print(lastRow[i_end])
+	# print(singleBuyPrice)
+
 	if row[i_buy] >= lastRow[i_end]:
 		return singleBuyPrice
 
@@ -94,6 +100,22 @@ def chooseBuyPrice(endData, lastNDataList):
 	i_end = config.getEndNum()
 	i_buy = config.getBuyPriceNum()
 	i_sell = config.getSellPriceNum()
+
+	# in Choose Function judge the buyPrice is big or small than lastDay endPrice 
+	# buyPrice is not allowed to be lower 91% of the lastDay endPrice
+	lastOneData = lastNDataList[-1]
+
+	# print(lastOneData)
+	# print(endData[i_buy])
+	# print(lastOneData[i_end])
+	# print(singleBuyPrice)
+
+	if endData[i_buy] >= lastOneData[i_end]:
+		return singleBuyPrice
+
+	downRate = endData[i_buy] / lastOneData[i_end]
+	if downRate < 0.95:
+		return singleBuyPrice
 
 	for data in lastNDataList:
 		ma_n = ma_n + data[i_end]
